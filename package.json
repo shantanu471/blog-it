@@ -1,7 +1,19 @@
 {
+  "lint-staged": {
+    "./**/*.rb": [
+      "bundle exec rubocop -a --force-exclusion"
+    ],
+    "{Gemfile,Rakefile,config.ru}": [
+      "bundle exec rubocop -a --force-exclusion"
+    ],
+    "app/views/**/*.html.erb": [
+      "bundle exec erblint --lint-all --format compact -a"
+    ]
+  },
   "scripts": {
     "build": "node esbuild.config.js",
-    "dev": "vite"
+    "dev": "vite",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
@@ -41,5 +53,9 @@
   "resolutions": {
     "strip-ansi": "^6.0.1",
     "string-width": "^4.2.2"
+  },
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "12.3.7"
   }
 }
