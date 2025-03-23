@@ -1,11 +1,6 @@
 module.exports = {
   important: true,
   content: ["./app/javascript/**/*.{js,jsx}", "./app/views/**/*.html.erb"],
-  future: {
-    // removeDeprecatedGapUtilities: true,
-    // purgeLayersByDefault: true,
-  },
-  purge: [],
   theme: {
     extend: {
       colors: {
@@ -24,6 +19,4 @@ module.exports = {
       },
     },
   },
-  variants: {},
-  plugins: []
 };
