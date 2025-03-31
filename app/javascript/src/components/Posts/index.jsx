@@ -5,7 +5,7 @@ import { isNil, isEmpty, either } from "ramda";
 import { format } from "date-fns";
 import Logger from "js-logger";
 
-import PageLoader from "components/commons/PageLoader";
+import { PageLoader } from "../commons";
 import postsApi from "apis/posts";
 
 const Posts = () => {
