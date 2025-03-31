@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Book, List } from "@bigbinary/neeto-icons";
+import { Book, Edit, List } from "@bigbinary/neeto-icons";
 import { NavLink } from "react-router-dom";
 import { Avatar } from "@bigbinary/neetoui";
 
@@ -17,7 +17,15 @@ const Sidebar = () => (
       <List className="h-6 w-6" />
     </NavLink>
 
-    <div className="mt-4 flex h-full flex-col justify-end">
+    <NavLink
+       activeClassName="bg-black text-white"
+       className="my-2 rounded-lg p-2 hover:bg-gray-400"
+       to="/posts/create"
+     >
+       <Edit className="h-7 w-7" />
+     </NavLink>
+
+     <div className="mb-6 mt-4 flex h-full flex-col justify-end">
       <Avatar size="large" />
     </div>
   </div>
