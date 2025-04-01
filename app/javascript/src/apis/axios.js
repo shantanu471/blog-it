@@ -42,7 +42,7 @@ const handleErrorResponse = axiosErrorObject => {
   Toastr.error(
     axiosErrorObject.response?.data?.error || DEFAULT_ERROR_NOTIFICATION,
      {
-       autoCLose: 2000,
+       autoClose: 2000,
      }
   );
   if (axiosErrorObject.response?.status === 423) {
