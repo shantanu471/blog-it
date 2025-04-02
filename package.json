@@ -52,7 +52,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.2.0",
-    "react-toastify": "^9.0.1",
+    "react-toastify": "^8.0.2",
     "react_ujs": "^3.2.1",
     "remixicon": "^4.6.0",
     "sass": "^1.59.3",
@@ -60,7 +60,8 @@
     "tailwindcss": "^3.4.1",
     "util": "^0.12.5",
     "vite": "6.0.3",
-    "vite-plugin-svgr": "^4.3.0"
+    "vite-plugin-svgr": "^4.3.0",
+    "yup": "^0.32.11"
   },
   "resolutions": {
     "strip-ansi": "^6.0.1",
