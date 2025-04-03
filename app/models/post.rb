@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   MAX_TITLE_LENGTH = 125
   MAX_DESCRIPTION_LENGTH = 10000
 
+  belongs_to :assigned_organization, foreign_key: "assigned_organization_id", class_name: "Organization"
+
   validates :title,
     presence: true,
     length: { maximum: MAX_TITLE_LENGTH }
