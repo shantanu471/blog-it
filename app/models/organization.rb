@@ -5,5 +5,7 @@ class Organization < ApplicationRecord
 
   has_many :assigned_posts, foreign_key: :assigned_organization_id, class_name: "Post"
 
+  has_many :assigned_users, foreign_key: :assigned_organization_id, class_name: "User"
+
   validates :organization_name, presence: true, uniqueness: true, length: { maximum: MAX_NAME_LENGTH }
 end
