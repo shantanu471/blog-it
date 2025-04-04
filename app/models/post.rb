@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   MAX_TITLE_LENGTH = 125
   MAX_DESCRIPTION_LENGTH = 10000
 
+  has_and_belongs_to_many :categories
+
   belongs_to :assigned_organization, foreign_key: "assigned_organization_id", class_name: "Organization"
 
   belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
