@@ -6,6 +6,8 @@ class Post < ApplicationRecord
 
   belongs_to :assigned_organization, foreign_key: "assigned_organization_id", class_name: "Organization"
 
+  belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
+
   validates :title,
     presence: true,
     length: { maximum: MAX_TITLE_LENGTH }
