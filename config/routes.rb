@@ -9,9 +9,10 @@ Rails.application.routes.draw do
 
   constraints(lambda { |req| req.format == :json }) do
     resources :posts, except: %i[new edit destroy update], param: :slug
-    resources :users, only: :index
-    resources :categories, only: [:index, :create]
   end
+
+  resources :users, only: :index
+  resources :categories, only: [:index, :create]
 
   root "home#index"
   get "*path", to: "home#index", via: :all

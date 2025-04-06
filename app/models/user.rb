@@ -4,6 +4,7 @@ class User < ApplicationRecord
   MAX_NAME_LENGTH = 50
   MIN_PASSWORD_LENGTH = 8
   VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i.freeze
+  MAX_EMAIL_LENGTH = 255
 
   has_many :assigned_posts, foreign_key: :assigned_user_id, class_name: "Post"
   belongs_to :assigned_organization, foreign_key: "assigned_organization_id", class_name: "Organization"

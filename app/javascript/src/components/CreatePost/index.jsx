@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import categoriesApi from "apis/categories";
 import postsApi from "apis/posts";
 import usersApi from "apis/users";
+import Logger from "js-logger";
 
 import PostForm from "./Form";
 
@@ -35,7 +36,7 @@ const CreatePost = () => {
       await postsApi.create(postData);
       history.push("/blogs");
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
     } finally {
       setLoading(false);
     }
@@ -55,7 +56,7 @@ const CreatePost = () => {
       );
       setLoading(false);
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
       setLoading(false);
     }
   };

@@ -17,14 +17,14 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_04_070915) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_and_posts", force: :cascade do |t|
+  create_table "categories_posts", force: :cascade do |t|
     t.integer "category_id", null: false
     t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id", "post_id"], name: "index_categories_and_posts_on_category_id_and_post_id", unique: true
-    t.index ["category_id"], name: "index_categories_and_posts_on_category_id"
-    t.index ["post_id"], name: "index_categories_and_posts_on_post_id"
+    t.index ["category_id", "post_id"], name: "index_categories_posts_on_category_id_and_post_id", unique: true
+    t.index ["category_id"], name: "index_categories_posts_on_category_id"
+    t.index ["post_id"], name: "index_categories_posts_on_post_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -57,8 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_04_070915) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "categories_and_posts", "categories"
-  add_foreign_key "categories_and_posts", "posts"
+  add_foreign_key "categories_posts", "categories"
+  add_foreign_key "categories_posts", "posts"
   add_foreign_key "posts", "organizations", column: "assigned_organization_id"
   add_foreign_key "posts", "users", column: "assigned_user_id"
   add_foreign_key "users", "organizations", column: "assigned_organization_id"

@@ -8,6 +8,8 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import postsApi from "apis/posts";
 import PageLoader from "components/commons/PageLoader";
 
+import Logger from "js-logger";
+
 const Posts = ({ categorySearched, selectedCategories }) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +27,7 @@ const Posts = ({ categorySearched, selectedCategories }) => {
       setPosts(posts);
       setLoading(false);
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
       setLoading(false);
     }
   };
