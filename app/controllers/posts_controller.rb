@@ -4,8 +4,22 @@ class PostsController < ApplicationController
   before_action :load_post!, only: %i[show]
 
   def index
-    posts = Post.all
-    render status: :ok, json: { posts: }
+    posts = Post.includes(:categories, :assigned_user)
+    if params[:category_id].present?
+      posts = posts.joins(:categories).where(categories: { id: params[:category_id] })
+    elsif params[:category_name].present?
+      posts = posts.joins(:categories).where(
+        "LOWER(categories.category_name) LIKE LOWER(?)",
+        "%#{params[:category_name]}%")
+    elsif params[:category_names].present?
+      posts = posts.joins(:categories).where(
+        "LOWER(categories.category_name) IN (?)",
+        params[:category_names].map(&:downcase)
+      )
+    end
+
+    @post_ids = posts.distinct.pluck(:id)
+    @posts = Post.includes(:categories, :assigned_user).where(id: @post_ids)
   end
 
   def create
@@ -14,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render_json({ post: @post })
+    render
   end
 
   private
@@ -24,6 +38,12 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(
+        :title,
+        :description,
+        :assigned_user_id,
+        :assigned_organization_id,
+        category_ids: []
+           )
     end
 end
