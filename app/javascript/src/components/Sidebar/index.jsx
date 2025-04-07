@@ -17,17 +17,13 @@ const Sidebar = ({ onCategorySearch, onCategorySelect, onSidebarOpen }) => {
   return (
     <div className="fixed flex h-screen">
       <div className="flex w-16 flex-col items-center border-r border-gray-200 bg-white py-4">
+
+        <Book className="h-20 w-12 my-4 py-2 rounded-lg bg-black text-white" />
+
         <NavLink
           activeClassName="bg-black text-white"
           className="my-2 rounded-lg p-2 hover:bg-gray-400"
           to="/blogs"
-        >
-          <Book className="h-6 w-6" />
-        </NavLink>
-        <NavLink
-          activeClassName="bg-black text-white"
-          className="my-2 rounded-lg p-2 hover:bg-gray-400"
-          to="/lists"
         >
           <List className="h-6 w-6" />
         </NavLink>
