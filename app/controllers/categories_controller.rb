@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
 
   def create
     Category.create!(category_params)
-    render_notice(t("successfully_created"))
+    render_notice(t("successfully_created_category"))
   end
 
   private
