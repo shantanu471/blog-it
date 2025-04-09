@@ -3,8 +3,8 @@
 json.post do
   json.(@post, :id, :title, :description, :slug, :created_at, :updated_at)
 
-  json.assigned_user do
-    json.(@post.assigned_user, :id, :username)
+  json.user do
+    json.(@post.user, :id, :username)
   end
 
   json.categories @post.categories do |category|

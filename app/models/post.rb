@@ -6,9 +6,9 @@ class Post < ApplicationRecord
 
   has_and_belongs_to_many :categories
 
-  belongs_to :assigned_organization, foreign_key: "assigned_organization_id", class_name: "Organization"
+  belongs_to :organization
 
-  belongs_to :assigned_user, foreign_key: "assigned_user_id", class_name: "User"
+  belongs_to :user
 
   validates :title,
     presence: true,

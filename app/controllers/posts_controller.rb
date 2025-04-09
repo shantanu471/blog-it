@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :load_post!, only: %i[show]
 
   def index
-    posts = Post.includes(:categories, :assigned_user)
+    posts = Post.includes(:categories, :user)
     if params[:category_id].present?
       posts = posts.joins(:categories).where(categories: { id: params[:category_id] })
     elsif params[:category_name].present?
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     end
 
     @post_ids = posts.distinct.pluck(:id)
-    @posts = Post.includes(:categories, :assigned_user).where(id: @post_ids)
+    @posts = Post.includes(:categories, :user).where(id: @post_ids)
   end
 
   def create
@@ -41,8 +41,8 @@ class PostsController < ApplicationController
       params.require(:post).permit(
         :title,
         :description,
-        :assigned_user_id,
-        :assigned_organization_id,
+        :user_id,
+        :organization_id,
         category_ids: []
            )
     end

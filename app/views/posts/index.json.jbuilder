@@ -7,11 +7,7 @@ json.posts @posts do |post|
     json.extract! category, :id, :category_name
   end
 
-  json.assigned_user do
-    if post.assigned_user.present?
-      json.extract! post.assigned_user, :id, :username, :email
-    else
-      json.null!
-    end
+  json.user do
+    json.extract! post.user, :id, :username, :email
   end
 end

@@ -54,7 +54,7 @@ const Show = () => {
             <Avatar size="large" />
             <div className="flex flex-col">
               <Typography className="text-black-500 font-md">
-                {post.assigned_user?.username}
+                {post.user?.username}
               </Typography>
               <Typography className="text-gray-500">
                 {format(new Date(post.created_at), "dd MMMM yyyy")}

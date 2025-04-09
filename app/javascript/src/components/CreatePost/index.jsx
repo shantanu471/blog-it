@@ -28,8 +28,8 @@ const CreatePost = () => {
 
       const postData = {
         ...values,
-        assigned_user_id: defaultUser.id,
-        assigned_organization_id: defaultUser.assigned_organization_id,
+        user_id: defaultUser.id,
+        organization_id: defaultUser.organization_id,
         category_ids,
       };
 

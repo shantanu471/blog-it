@@ -91,7 +91,7 @@ const Posts = ({ categorySearched, selectedCategories }) => {
                   ))}
                 </div>
                 <Typography className="text-black-500 font-semibold">
-                  {post.assigned_user?.username}
+                  {post.user?.username}
                 </Typography>
                 <Typography className="text-gray-500">
                   {format(new Date(post.created_at), "dd MMMM yyyy")}

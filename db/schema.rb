@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_04_070915) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_09_092535) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name", null: false
     t.datetime "created_at", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_04_070915) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug", null: false
-    t.integer "assigned_organization_id"
-    t.integer "assigned_user_id"
+    t.integer "organization_id"
+    t.integer "user_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
@@ -53,13 +53,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_04_070915) do
     t.datetime "updated_at", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
-    t.integer "assigned_organization_id"
+    t.integer "organization_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "categories_posts", "categories"
   add_foreign_key "categories_posts", "posts"
-  add_foreign_key "posts", "organizations", column: "assigned_organization_id"
-  add_foreign_key "posts", "users", column: "assigned_user_id"
-  add_foreign_key "users", "organizations", column: "assigned_organization_id"
+  add_foreign_key "posts", "organizations"
+  add_foreign_key "posts", "users"
+  add_foreign_key "users", "organizations"
 end
