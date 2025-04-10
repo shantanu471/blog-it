@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_09_092535) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_10_085445) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "organization_id", null: false
+    t.index ["organization_id"], name: "index_categories_on_organization_id"
   end
 
   create_table "categories_posts", force: :cascade do |t|
@@ -57,6 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_09_092535) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "categories", "organizations"
   add_foreign_key "categories_posts", "categories"
   add_foreign_key "categories_posts", "posts"
   add_foreign_key "posts", "organizations"

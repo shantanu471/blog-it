@@ -5,5 +5,8 @@ class Category < ApplicationRecord
 
   has_and_belongs_to_many :posts
 
-  validates :category_name, presence: true, uniqueness: true, length: { maximum: MAX_NAME_LENGTH }
+  belongs_to :organization
+
+  validates :category_name, presence: true, uniqueness: { scope: :organization_id },
+    length: { maximum: MAX_NAME_LENGTH }
 end

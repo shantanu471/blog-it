@@ -7,5 +7,7 @@ class Organization < ApplicationRecord
 
   has_many :users, dependent: :destroy
 
+  has_many :categories, dependent: :destroy
+
   validates :organization_name, presence: true, uniqueness: true, length: { maximum: MAX_NAME_LENGTH }
 end

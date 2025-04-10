@@ -4,11 +4,14 @@ class PostsController < ApplicationController
   before_action :load_post!, only: %i[show]
 
   def index
-    @posts = PostQueryService.call(params)
+    @posts = PostQueryService.call(
+      params.merge(
+        organization_id: organization.id,
+      ))
   end
 
   def create
-    Post.create!(post_params)
+    organization.posts.create!(post_params.merge(user_id: current_user.id))
     render_notice(t("successfully_created"))
   end
 
@@ -30,5 +33,13 @@ class PostsController < ApplicationController
         :organization_id,
         category_ids: []
            )
+    end
+
+    def current_user
+      User.first
+    end
+
+    def organization
+      Organization.first
     end
 end

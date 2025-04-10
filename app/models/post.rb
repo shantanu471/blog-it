@@ -29,6 +29,8 @@ class Post < ApplicationRecord
 
   validate :slug_not_changed
 
+  validate :categories_belong_to_same_organization
+
   before_create :set_slug
 
   private
@@ -53,6 +55,12 @@ class Post < ApplicationRecord
     def slug_not_changed
       if will_save_change_to_slug? && self.persisted?
         errors.add(:slug, I18n.t("task.slug.immutable"))
+      end
+    end
+
+    def categories_belong_to_same_organization
+      if categories.any? { |category| category.organization_id != organization_id }
+        errors.add(:categories, "must belong to the same organization as the post")
       end
     end
 end

@@ -3,6 +3,7 @@
 class PostQueryService
   def self.call(params)
     posts = Post.includes(:categories, :user)
+      .where(organization_id: params[:organization_id])
 
     if params[:category_id].present?
       posts = posts.joins(:categories).where(categories: { id: params[:category_id] })
