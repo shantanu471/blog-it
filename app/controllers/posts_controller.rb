@@ -4,10 +4,11 @@ class PostsController < ApplicationController
   before_action :load_post!, only: %i[show]
 
   def index
-    @posts = PostQueryService.call(
+    @posts = PostQueryService.new(
       params.merge(
         organization_id: organization.id,
-      ))
+      )
+  ).process!
   end
 
   def create

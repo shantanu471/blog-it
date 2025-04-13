@@ -86,7 +86,7 @@ const Posts = ({ categorySearched, selectedCategories }) => {
                     <Tag
                       className="border-none bg-green-100 px-2 py-1 text-black"
                       key={category.id}
-                      label={category.category_name}
+                      label={category.name}
                     />
                   ))}
                 </div>

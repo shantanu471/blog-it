@@ -50,7 +50,7 @@ const CreatePost = () => {
 
       setCategories(
         categories_posts.map(category => ({
-          label: category.category_name,
+          label: category.name,
           value: category.id,
         }))
       );

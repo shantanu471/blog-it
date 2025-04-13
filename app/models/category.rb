@@ -7,6 +7,6 @@ class Category < ApplicationRecord
 
   belongs_to :organization
 
-  validates :category_name, presence: true, uniqueness: { scope: :organization_id },
+  validates :name, presence: true, uniqueness: { scope: :organization_id },
     length: { maximum: MAX_NAME_LENGTH }
 end

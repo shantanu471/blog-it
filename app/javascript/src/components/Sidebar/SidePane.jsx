@@ -4,6 +4,8 @@ import { AddCircle, Search } from "@bigbinary/neeto-icons";
 import { Button, Input, Typography, Checkbox } from "@bigbinary/neetoui";
 import classnames from "classnames";
 
+import Logger from "js-logger";
+
 import categoriesApi from "apis/categories";
 
 import FilterModal from "./FilterModal";
@@ -20,7 +22,7 @@ const SidePane = ({ isOpen, onCategorySearch, onCategorySelect }) => {
       const { data } = await categoriesApi.fetch();
       setCategories(data.categories);
     } catch (error) {
-      logger.error("Error fetching categories:", error);
+      Logger.error("Error fetching categories:", error);
     }
   };
 
@@ -31,11 +33,11 @@ const SidePane = ({ isOpen, onCategorySearch, onCategorySelect }) => {
   const handleAddCategory = async categoryName => {
     try {
       await categoriesApi.create({
-        category_name: categoryName,
+        name: categoryName,
       });
       fetchCategories();
     } catch (error) {
-      logger.error("Error creating category:", error);
+      Logger.error("Error creating category:", error);
     }
   };
 
@@ -102,11 +104,11 @@ const SidePane = ({ isOpen, onCategorySearch, onCategorySelect }) => {
               </Typography>
               {categories.map(category => (
                 <Checkbox
-                  checked={selectedCategories.includes(category.category_name)}
+                  checked={selectedCategories.includes(category.name)}
                   className="p-2"
                   key={category.id}
-                  label={category.category_name}
-                  onChange={() => handleCategoryClick(category.category_name)}
+                  label={category.name}
+                  onChange={() => handleCategoryClick(category.name)}
                 />
               ))}
             </div>

@@ -8,6 +8,6 @@ json.post do
   end
 
   json.categories @post.categories do |category|
-    json.(category, :id, :category_name)
+    json.(category, :id, :name)
   end
 end

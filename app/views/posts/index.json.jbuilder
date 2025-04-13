@@ -4,7 +4,7 @@ json.posts @posts do |post|
   json.extract! post, :id, :title, :description, :slug, :created_at, :updated_at
 
   json.categories post.categories do |category|
-    json.extract! category, :id, :category_name
+    json.extract! category, :id, :name
   end
 
   json.user do

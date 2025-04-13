@@ -9,5 +9,5 @@ class Organization < ApplicationRecord
 
   has_many :categories, dependent: :destroy
 
-  validates :organization_name, presence: true, uniqueness: true, length: { maximum: MAX_NAME_LENGTH }
+  validates :name, presence: true, uniqueness: true, length: { maximum: MAX_NAME_LENGTH }
 end
