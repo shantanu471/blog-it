@@ -19,6 +19,9 @@ gem "puma", ">= 5.0"
 # React gem
 gem "react-rails", "~> 2.7.1"
 
+# bcrypt
+gem "bcrypt", "~> 3.1.13"
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
 

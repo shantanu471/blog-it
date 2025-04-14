@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :posts, only: %i[index create show], param: :slug
+  constraints(lambda { |req| req.format == :json }) do
+    resources :posts, except: %i[new edit destroy update], param: :slug
+  end
+
+  resources :users, only: :index
+  resources :categories, only: [:index, :create]
 
   root "home#index"
   get "*path", to: "home#index", via: :all
