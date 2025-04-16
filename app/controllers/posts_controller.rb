@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def create
     organization.posts.create!(post_params.merge(user_id: current_user.id))
-    render_notice(t("successfully_created"))
+    render_notice(t("successfully_created", entity: "Post"))
   end
 
   def show

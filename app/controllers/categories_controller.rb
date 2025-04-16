@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def create
     @organization.categories.create!(category_params)
-    render_notice(t("successfully_created_category"))
+    render_notice(t("successfully_created", entity: "Category"))
   end
 
   private
