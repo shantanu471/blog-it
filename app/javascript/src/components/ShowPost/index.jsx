@@ -7,6 +7,8 @@ import { useHistory, useParams } from "react-router-dom";
 import postsApi from "apis/posts";
 import PageLoader from "components/commons/PageLoader";
 
+import Logger from "js-logger";
+
 const Show = () => {
   const [post, setPost] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,7 +23,7 @@ const Show = () => {
       setPost(post);
       setLoading(false);
     } catch (error) {
-      logger.error(error);
+      Logger.error(error);
       history.push("/blogs");
     }
   };
