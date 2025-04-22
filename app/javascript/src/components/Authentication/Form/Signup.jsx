@@ -9,7 +9,7 @@ import { signupSchema } from "utils/validationSchema";
 const Signup = ({ handleSubmit, initialValues, loading, organizations }) => {
   const organizationOptions =
     organizations?.map(org => ({
-      label: org.organization_name,
+      label: org.name,
       value: org.id,
     })) || [];
 
@@ -61,7 +61,7 @@ const Signup = ({ handleSubmit, initialValues, loading, organizations }) => {
               <Typography>Organization</Typography>
               <Select
                 required
-                name="assigned_organization_id"
+                name="organization_id"
                 options={organizationOptions}
                 placeholder="Select organization"
               />
