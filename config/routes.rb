@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   constraints(lambda { |req| req.format == :json }) do
-    resources :posts, except: %i[new edit destroy update], param: :slug
+    resources :posts, only: %i[index create show], param: :slug
+    resource :session, only: [:create, :destroy]
   end
 
-  resources :users, only: :index
+  resources :organization, only: :index
+  resources :users, only: %i[index create]
   resources :categories, only: [:index, :create]
 
   root "home#index"

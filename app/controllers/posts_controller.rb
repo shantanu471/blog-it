@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user_using_x_auth_token
   before_action :load_post!, only: %i[show]
 
   def index
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
 
   def create
     organization.posts.create!(post_params.merge(user_id: current_user.id))
-    render_notice(t("successfully_created"))
+    render_notice(t("successfully_created", entity: "Post"))
   end
 
   def show
@@ -36,11 +37,7 @@ class PostsController < ApplicationController
            )
     end
 
-    def current_user
-      User.first
-    end
-
     def organization
-      Organization.first
+      current_user.organization
     end
 end
