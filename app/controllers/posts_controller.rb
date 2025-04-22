@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  skip_before_action :authenticate_user_using_x_auth_token
-
+  before_action :authenticate_user_using_x_auth_token
   before_action :load_post!, only: %i[show]
 
   def index
@@ -38,11 +37,7 @@ class PostsController < ApplicationController
            )
     end
 
-    def current_user
-      @current_user
-    end
-
     def organization
-      @current_user.organization
+      current_user.organization
     end
 end

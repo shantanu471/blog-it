@@ -5,7 +5,7 @@ import authApi from "apis/auth";
 import organizationsApi from "apis/organizations";
 import SignupForm from "components/Authentication/Form/Signup";
 
-const Signup = ({ history }) => {
+const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [organizations, setOrganizations] = useState();
 
@@ -20,7 +20,7 @@ const Signup = ({ history }) => {
         organization_id: values.organization_id.value,
       });
       setLoading(false);
-      history.push("/blogs");
+      window.location.href = "/blogs";
     } catch (error) {
       Logger.error(error);
       setLoading(false);

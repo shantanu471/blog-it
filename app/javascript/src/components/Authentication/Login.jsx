@@ -7,7 +7,7 @@ import { setToLocalStorage } from "utils/storage";
 
 import Logger from "js-logger";
 
-const Login = ({ history }) => {
+const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async values => {
@@ -25,7 +25,7 @@ const Login = ({ history }) => {
         userName: response.data.username,
       });
       setAuthHeaders();
-      history.push("/blogs");
+      window.location.href = "/blogs";
       setLoading(false);
     } catch (error) {
       Logger.error(error);
